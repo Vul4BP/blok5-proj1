@@ -7,7 +7,7 @@
         xmlns:viewmodels="clr-namespace:Blok5_P1.ViewModel"
         xmlns:views="clr-namespace:Blok5_P1.View"
         mc:Ignorable="d"
-        Title="Application" Width="442" Height="600">
+        Title="" Width="442" Height="600">
     <Window.Resources>
         <DataTemplate x:Key="logInViewTemplate" DataType="{x:Type viewmodels:LogInViewModel}">
             <views:LogInView DataContext="{Binding}"/>

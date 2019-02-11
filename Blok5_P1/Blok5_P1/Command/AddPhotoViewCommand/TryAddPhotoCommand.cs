@@ -47,7 +47,16 @@ namespace Blok5_P1.Command.AddPhotoViewCommand
                 }
 
                 Photo photo = new Photo();
-                photo.Location = _addPhotoViewModel.ImagePath;
+
+                //--------------------------------------------------------------------------------------------------
+                //Kopiramo originalnu sliku u nas folder i tu je cuvamo, i u bazu upisujemo ime nase slike
+                string[] words = _addPhotoViewModel.ImagePath.Split('\\');                        
+                string imgName = words[words.Length - 1];
+                string destLocation = Directory.GetCurrentDirectory() + Config.ImgFolderName + "\\" + imgName;
+                string sourceLocation = _addPhotoViewModel.ImagePath;
+                System.IO.File.Copy(sourceLocation, destLocation, true);
+                //--------------------------------------------------------------------------------------------------
+                photo.Location = imgName;
                 photo.Title = _addPhotoViewModel.Title;
                 photo.Description = _addPhotoViewModel.Description;
                 photo.Timestamp = DateTime.Now.ToString();
